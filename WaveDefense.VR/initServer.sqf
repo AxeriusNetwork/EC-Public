@@ -42,7 +42,7 @@ if (playerSide isEqualTo independent) then {CAP_UnitGroup = createGroup east;};
 
 CAP_wavePerSession = 5;
 
-if !(alive allPlayers) then {
+if !(alive player) then {
 	[ 
 	  ["VR SYSTEM","You have failed Wave Defence! Better luck next time..",0] 
 	] spawn BIS_fnc_EXP_camp_playSubtitles;
