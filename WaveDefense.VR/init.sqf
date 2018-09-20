@@ -1,14 +1,3 @@
-InstructorGuy addAction ["Loadout: Rifleman.",{
-	player call CAP_fnc_removeAll;
-	player call CAP_fnc_RIFLE_West;
-}];
-
-InstructorGuy addAction ["Start Next Wave..",{
-	sleep 2.5;
-	CAP_StartWave = true;
-	playMusic "LeadTrack01_F_Bootcamp";
-}];
-
 CAP_fnc_removeAll = {
 	
 	removeAllWeapons _this;
@@ -110,4 +99,15 @@ CAP_fnc_loadoutsSelect = {
 		"RIFLE",
 		"UGL"
 	];
-}
+};
+
+InstructorGuy addAction ["- START WAVE -",{
+	sleep 2.5;
+	CAP_StartWave = true;
+	playMusic "LeadTrack01_F_Bootcamp";
+}];
+
+InstructorGuy addAction ["-- Loadout: Rifleman -- ",{
+	player call CAP_fnc_removeAll;
+	player call CAP_fnc_RIFLE_West;
+}];
