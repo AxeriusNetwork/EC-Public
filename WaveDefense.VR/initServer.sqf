@@ -55,7 +55,6 @@ for "_w" from 1 to CAP_wavePerSession do {
 	CAP_TrigOpfor = false;
 	CAP_StartWave = false;
 	CAP_WaitingWave = true;
-	call CAP_fnc_Dead;
 
 	waitUntil {CAP_StartWave};
 

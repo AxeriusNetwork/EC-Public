@@ -62,16 +62,11 @@ CAP_fnc_UGL_West = {
 	_this addWeapon "arifle_AK12_GL_F";_this addPrimaryWeaponItem "acc_flashlight";
 };
 
-CAP_fnc_Dead = {
-	[] spawn {
-	    while {true} do {
-	        {
-	        	sleep 2.5;
-	            deleteVehicle _x;
-	        } forEach allDead;
-	    };
-	};
-};
+allUnits addEventHandler ["Killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+		sleep 2.5;
+	    deleteVehicle _unit;
+}];
 
 CAP_fnc_unitsSelect = {
 	CAP_units = selectRandom [
