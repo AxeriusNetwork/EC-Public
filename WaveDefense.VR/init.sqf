@@ -103,6 +103,13 @@ InstructorGuy addAction ["- START WAVE -",{
 }];
 
 InstructorGuy addAction ["-- Loadout: Rifleman -- ",{
-	player call CAP_fnc_removeAll;
-	player call CAP_fnc_RIFLE_West;
+	_unit = (_this select 3);
+	_unit call CAP_fnc_removeAll;
+	_unit call CAP_fnc_RIFLE_West;
+}];
+
+InstructorGuy addAction ["-- Loadout: Rifleman UGL -- ",{
+	_unit = (_this select 3);
+	_unit call CAP_fnc_removeAll;
+	_unit call CAP_fnc_UGL_West;
 }];
