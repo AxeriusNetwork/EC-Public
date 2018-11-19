@@ -62,11 +62,48 @@ CAP_fnc_UGL_West = {
 	_this addWeapon "arifle_AK12_GL_F";_this addPrimaryWeaponItem "acc_flashlight";
 };
 
-allUnits addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-		sleep 2.5;
-	    deleteVehicle _unit;
-}];
+_players = [
+slot_1,slot_2,slot_3,
+slot_4,slot_5,slot_6
+];
+
+{
+	if (playerSide == west) then {
+		if (!isPlayer _x) then {
+			_unit = _x;
+			_unit call CAP_fnc_removeAll;
+			if (_x == slot_1) then { _unit call CAP_fnc_RIFLE_West; };
+			if (_x == slot_2) then { _unit call CAP_fnc_UGL_West; };
+			if (_x == slot_3) then { _unit call CAP_fnc_RIFLE_West; };
+			if (_x == slot_4) then { _unit call CAP_fnc_UGL_West; };
+			if (_x == slot_5) then { _unit call CAP_fnc_RIFLE_West; };
+			if (_x == slot_6) then { _unit call CAP_fnc_UGL_West; };
+		};
+	};
+
+	if (playerSide == east) then {
+		if (!isPlayer _x) then {
+			_unit = _x;
+			_unit call CAP_fnc_removeAll;
+			if (_x == slot_1) then { _unit call CAP_fnc_RIFLE_East; };
+			if (_x == slot_2) then { _unit call CAP_fnc_UGL_East; };
+			if (_x == slot_3) then { _unit call CAP_fnc_RIFLE_East; };
+			if (_x == slot_4) then { _unit call CAP_fnc_UGL_East; };
+			if (_x == slot_5) then { _unit call CAP_fnc_RIFLE_East; };
+			if (_x == slot_6) then { _unit call CAP_fnc_UGL_East; };
+		};
+	};
+} foreach _players;
+
+
+[] spawn {
+	while {true} do {
+	  	{ 
+			sleep 2.5;
+			deleteVehicle _x;
+		} foreach allDeadMen;
+	};
+};
 
 CAP_fnc_unitsSelect = {
 	CAP_units = selectRandom [
@@ -102,14 +139,26 @@ InstructorGuy addAction ["- START WAVE -",{
 	playMusic "LeadTrack01_F_Bootcamp";
 }];
 
-InstructorGuy addAction ["-- Loadout: Rifleman -- ",{
-	_unit = (_this select 3);
+InstructorGuy addAction ["<t color='#fbc531'>-- <t color='#9c88ff'>Loadout: <t color='#487eb0'>Rifleman <t color='#fbc531'>-- ",{
+	_unit = (_this select 1);
 	_unit call CAP_fnc_removeAll;
 	_unit call CAP_fnc_RIFLE_West;
 }];
 
-InstructorGuy addAction ["-- Loadout: Rifleman UGL -- ",{
-	_unit = (_this select 3);
+InstructorGuy addAction ["<t color='#fbc531'>-- <t color='#9c88ff'>Loadout: <t color='#487eb0'>Rifleman UGL <t color='#fbc531'>-- ",{
+	_unit = (_this select 1);
 	_unit call CAP_fnc_removeAll;
 	_unit call CAP_fnc_UGL_West;
 }];
+
+// Explosions
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions1", (getPos TrigNorth)];
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions2", (getPos TrigSouth)];
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions3", (getPos TrigEast)];
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions4", (getPos TrigWest)];
+
+// Firefight
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight1", 	(getPos TrigNorth)];
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight2", 	(getPos TrigSouth)];
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight3", 	(getPos TrigEast)];
+playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight4", 	(getPos TrigWest)];

@@ -40,11 +40,25 @@ if (playerSide isEqualTo west) then {CAP_UnitGroup = createGroup east;};
 
 if (playerSide isEqualTo independent) then {CAP_UnitGroup = createGroup east;};
 
+[ 
+	["<t color='#273c75'>VR SYSTEM","<t color='#487eb0'>Welcome to Wave Defence! Contact your Instructor to get your Loadout!",0]
+] spawn BIS_fnc_EXP_camp_playSubtitles;
+
+while {true} do {
+	if (CAP_WaitingWave) then {
+		[ 
+	  		["<t color='#273c75'>VR SYSTEM","<t color='#487eb0'>Waiting to start the Next Wave. Contact your Instructor!",0],
+	  		["<t color='#273c75'>VR SYSTEM","<t color='#487eb0'>Waiting to start the Next Wave.. Contact your Instructor!",4],
+	  		["<t color='#273c75'>VR SYSTEM","<t color='#487eb0'>Waiting to start the Next Wave... Contact your Instructor!",8]
+		] spawn BIS_fnc_EXP_camp_playSubtitles;
+	};
+};
+
 CAP_wavePerSession = 5;
 
 if !(alive player) then {
 	[ 
-	  ["<t color='#273c75'>VR SYSTEM","You have failed Wave Defence! Better luck next time..",0] 
+	  ["<t color='#273c75'>VR SYSTEM","<t color='#e84118'>You have failed Wave Defence! Better luck next time..",0] 
 	] spawn BIS_fnc_EXP_camp_playSubtitles;
 	sleep 4;
 	endMission "loser";
@@ -59,14 +73,14 @@ for "_w" from 1 to CAP_wavePerSession do {
 	waitUntil {CAP_StartWave};
 
 	[ 
-	  ["<t color='#273c75'>VR SYSTEM","<t color=''>Wave Started! Good Luck",0]
+	  ["<t color='#273c75'>VR SYSTEM","<t color='#fbc531'>Wave Started! Good Luck",0]
 	] spawn BIS_fnc_EXP_camp_playSubtitles;
 
-	call CAP_fnc_unitsSelect;
+	[] call CAP_fnc_unitsSelect;
 
-	call CAP_fnc_objectsSelect;
+	[] call CAP_fnc_objectsSelect;
 
-	call CAP_fnc_loadoutsSelect;
+	[] call CAP_fnc_loadoutsSelect;
 
 	{
 		CAP_unit = CAP_UnitGroup createUnit [_x, position CAP_objects, [], 0,"NONE"];
@@ -82,7 +96,7 @@ for "_w" from 1 to CAP_wavePerSession do {
 };
 
 [ 
-  ["<t color='#273c75'>VR SYSTEM","You have completed Wave Defence, congratulations!",0]
+  ["<t color='#273c75'>VR SYSTEM","<t color='#44bd32'>You have completed Wave Defence, congratulations!",0]
 ] spawn BIS_fnc_EXP_camp_playSubtitles;
 sleep 4;
 endMission "end1";
