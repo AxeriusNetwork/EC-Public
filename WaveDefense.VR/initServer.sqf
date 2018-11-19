@@ -44,7 +44,7 @@ CAP_wavePerSession = 5;
 
 if !(alive player) then {
 	[ 
-	  ["VR SYSTEM","You have failed Wave Defence! Better luck next time..",0] 
+	  ["<t color='#273c75'>VR SYSTEM","You have failed Wave Defence! Better luck next time..",0] 
 	] spawn BIS_fnc_EXP_camp_playSubtitles;
 	sleep 4;
 	endMission "loser";
@@ -59,7 +59,7 @@ for "_w" from 1 to CAP_wavePerSession do {
 	waitUntil {CAP_StartWave};
 
 	[ 
-	  ["VR SYSTEM","Wave Started! Good Luck",0]
+	  ["<t color='#273c75'>VR SYSTEM","<t color=''>Wave Started! Good Luck",0]
 	] spawn BIS_fnc_EXP_camp_playSubtitles;
 
 	call CAP_fnc_unitsSelect;
@@ -82,7 +82,7 @@ for "_w" from 1 to CAP_wavePerSession do {
 };
 
 [ 
-  ["VR SYSTEM","You have completed Wave Defence, congratulations!",0]
+  ["<t color='#273c75'>VR SYSTEM","You have completed Wave Defence, congratulations!",0]
 ] spawn BIS_fnc_EXP_camp_playSubtitles;
 sleep 4;
 endMission "end1";
