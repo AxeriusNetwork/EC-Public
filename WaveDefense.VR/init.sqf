@@ -136,9 +136,10 @@ CAP_fnc_loadoutsSelect = {
 };
 
 InstructorGuy addAction ["- START WAVE -",{
+	playMusic "LeadTrack01_F_Bootcamp";
+	InstructorGuy removeAction (_this select 2);
 	sleep 2.5;
 	CAP_StartWave = true;
-	playMusic "LeadTrack01_F_Bootcamp";
 }];
 
 InstructorGuy addAction ["<t color='#fbc531'>-- <t color='#9c88ff'>Loadout: <t color='#487eb0'>Rifleman <t color='#fbc531'>-- ",{
@@ -153,14 +154,3 @@ InstructorGuy addAction ["<t color='#fbc531'>-- <t color='#9c88ff'>Loadout: <t c
 	_unit call CAP_fnc_UGL_West;
 }];
 
-// Explosions
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions1.wss", (getPos TrigNorth)];
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions2.wss", (getPos TrigSouth)];
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions3.wss", (getPos TrigEast)];
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_explosions4.wss", (getPos TrigWest)];
-
-// Firefight
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight1.wss", 	(getPos TrigNorth)];
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight2.wss", 	(getPos TrigSouth)];
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight3.wss", 	(getPos TrigEast)];
-playSound3D ["A3\Sounds_F\environment\ambient\battlefield\battlefield_firefight4.wss", 	(getPos TrigWest)];

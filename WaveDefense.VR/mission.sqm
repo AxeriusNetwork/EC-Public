@@ -12,14 +12,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=28;
+		nextID=34;
 	};
 	class Camera
 	{
-		pos[]={2960.9954,8.0115213,7046.7051};
-		dir[]={0.23731956,-0.40032208,0.88524377};
-		up[]={0.10367863,0.91630852,0.38676593};
-		aside[]={0.96599662,8.504262e-006,-0.25896394};
+		pos[]={3027.9438,186.38918,7038.498};
+		dir[]={-0.33178034,-0.94315076,0.021391043};
+		up[]={-0.94123137,0.33228251,0.060685117};
+		aside[]={0.064342789,5.0690687e-008,0.99795765};
 	};
 };
 binarizationWanted=0;
@@ -33,6 +33,7 @@ addons[]=
 	"A3_Structures_F_Bootcamp_VR_Helpers",
 	"A3_Modules_F_Effects",
 	"A3_Characters_F",
+	"ace_explosives",
 	"A3_Modules_F_Multiplayer",
 	"A3_Modules_F_Curator_Multiplayer"
 };
@@ -40,7 +41,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Structures_F_Bootcamp";
@@ -84,6 +85,13 @@ class AddonsMetaData
 			url="https://www.arma3.com";
 		};
 		class Item6
+		{
+			className="ace_explosives";
+			name="ACE3 - Explosives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item7
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
@@ -268,8 +276,8 @@ class Mission
 		windForced=1;
 		year=2035;
 		day=28;
-		hour=0;
-		minute=0;
+		hour=1;
+		minute=10;
 		startFogBase=-1000;
 		forecastFogBase=-1000;
 		startFogDecay=0;
@@ -306,7 +314,6 @@ class Mission
 		{
 			dataType="Layer";
 			name="Inside";
-			state=1;
 			class Entities
 			{
 				items=641;
@@ -11370,7 +11377,6 @@ class Mission
 		{
 			dataType="Layer";
 			name="Wall";
-			state=1;
 			class Entities
 			{
 				items=159;
@@ -13881,7 +13887,6 @@ class Mission
 		{
 			dataType="Layer";
 			name="Layer 9";
-			state=1;
 			class Entities
 			{
 				items=258;
@@ -18088,7 +18093,6 @@ class Mission
 		{
 			dataType="Layer";
 			name="Ambient";
-			state=1;
 			class Entities
 			{
 				items=8;
@@ -18435,7 +18439,6 @@ class Mission
 		{
 			dataType="Layer";
 			name="Players and NPCs";
-			state=1;
 			class Entities
 			{
 				items=4;
@@ -18555,7 +18558,6 @@ class Mission
 						speedMode="LIMITED";
 					};
 					id=1157;
-					atlOffset=-5;
 				};
 				class Item1
 				{
@@ -18957,7 +18959,6 @@ class Mission
 						formation="DIAMOND";
 					};
 					id=140;
-					atlOffset=-5;
 				};
 				class Item2
 				{
@@ -19162,13 +19163,12 @@ class Mission
 				};
 			};
 			id=1419;
-			atlOffset=-0.875;
+			atlOffset=0.625;
 		};
 		class Item5
 		{
 			dataType="Layer";
 			name="Spawn Points";
-			state=1;
 			class Entities
 			{
 				items=8;

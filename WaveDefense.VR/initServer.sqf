@@ -41,29 +41,31 @@ if (playerSide isEqualTo west) then {CAP_UnitGroup = createGroup east;};
 if (playerSide isEqualTo independent) then {CAP_UnitGroup = createGroup east;};
 
 [ 
-	["<t color='#273c75'>VR SYSTEM","<t color='#487eb0'>Welcome to Wave Defence! Contact your Instructor to get your Loadout!",0]
+	["VR SYSTEM","<t color='#487eb0'>Welcome to Wave Defence! Contact your Instructor to get your Loadout!",0]
 ] spawn BIS_fnc_EXP_camp_playSubtitles;
 
-CAP_wavePerSession = 5;
+CAP_wavePerSession = 2;
 
-if !(alive player) then {
-	[ 
-	  ["<t color='#273c75'>VR SYSTEM","<t color='#e84118'>You have failed Wave Defence! Better luck next time..",0] 
-	] spawn BIS_fnc_EXP_camp_playSubtitles;
-	sleep 4;
-	endMission "loser";
-};
+{
+	if !(alive _x) then {
+		[ 
+		  ["VR SYSTEM","<t color='#e84118'>You have failed Wave Defence! Better luck next time..",0] 
+		] spawn BIS_fnc_EXP_camp_playSubtitles;
+		sleep 4;
+		endMission "loser";
+	};
+} forEach allPlayers;
 
 for "_w" from 1 to CAP_wavePerSession do {
 
-	CAP_TrigOpfor = false;
+	CAP_EndWave = false;
 	CAP_StartWave = false;
 	CAP_WaitingWave = true;
 
 	waitUntil {CAP_StartWave};
 
 	[ 
-	  ["<t color='#273c75'>VR SYSTEM","<t color='#fbc531'>Wave Started! Good Luck",0]
+	  ["VR SYSTEM","<t color='#fbc531'>Wave Started! Good Luck",0]
 	] spawn BIS_fnc_EXP_camp_playSubtitles;
 
 	[] call CAP_fnc_unitsSelect;
@@ -81,12 +83,19 @@ for "_w" from 1 to CAP_wavePerSession do {
 	_wp = CAP_UnitGroup addWaypoint [position waypointObj, 0];
 	CAP_Units = units CAP_UnitGroup;
 
-	waitUntil {CAP_TrigOpfor};
+	waitUntil {CAP_EndWave};
+
+	InstructorGuy addAction ["- START WAVE -",{
+		playMusic "LeadTrack01_F_Bootcamp";
+		InstructorGuy removeAction (_this select 2);
+		sleep 2.5;
+		CAP_StartWave = true;
+	}];
 
 };
 
 [ 
-  ["<t color='#273c75'>VR SYSTEM","<t color='#44bd32'>You have completed Wave Defence, congratulations!",0]
+  ["VR SYSTEM","<t color='#44bd32'>You have completed Wave Defence, congratulations!",0]
 ] spawn BIS_fnc_EXP_camp_playSubtitles;
 sleep 4;
 endMission "end1";
