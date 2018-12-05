@@ -1,14 +1,14 @@
 //Define Player
-_player = player;
+private _player = player;
 
 //Create a side logic
-_center = createCenter sideLogic;
+private _center = createCenter sideLogic;
 
 //Create a group for our modules
-_logicGroup = createGroup _center;
+private _logicGroup = createGroup _center;
 
 //Spawn a SupportRequestor module
-_requester = _logicGroup createUnit ["SupportRequester",getpos _player, [], 0, "FORM"];
+private _requester = _logicGroup createUnit ["SupportRequester",getpos _player, [], 0, "FORM"];
 
 //Setup requestor limit values
 {
@@ -19,16 +19,16 @@ _requester = _logicGroup createUnit ["SupportRequester",getpos _player, [], 0, "
 	"CAS_Bombing",
 	"Transport"
 ];
-_limitSupport = 1;
+private _limitSupport = 1;
 _player setVariable ["CAP_limitSupport", (_player getVariable "CAP_limitSupport") + _limitSupport, TRUE];
 
 //Create a position 1km away from _player in random direction
-_pos = [_player, 1000, (floor (random 360))] call BIS_fnc_relPos;
+private _pos = [_player, 1000, (floor (random 360))] call BIS_fnc_relPos;
 
 ///////
 
 //Spawn a SupportProvider mosule of type Virtual_Drop
-_providerTransport = _logicGroup createUnit ["SupportProvider_Virtual_Transport", _pos, [], 0, "FORM"];
+private _providerTransport = _logicGroup createUnit ["SupportProvider_Virtual_Transport", _pos, [], 0, "FORM"];
 
 //Setup provider values
 {
@@ -45,7 +45,7 @@ _providerTransport = _logicGroup createUnit ["SupportProvider_Virtual_Transport"
 ///////
 
 //Spawn a SupportProvider mosule of type Virtual_Artillery
-_providerArty = _logicGroup createUnit ["SupportProvider_Virtual_Artillery", _pos, [], 0, "FORM"];
+private _providerArty = _logicGroup createUnit ["SupportProvider_Virtual_Artillery", _pos, [], 0, "FORM"];
 
 //Setup provider values
 {
@@ -62,7 +62,7 @@ _providerArty = _logicGroup createUnit ["SupportProvider_Virtual_Artillery", _po
 ///////
 
 //Spawn a SupportProvider mosule of type Virtual_CAS_Bombing
-_providerCASBombing = _logicGroup createUnit ["SupportProvider_Virtual_CAS_Bombing", _pos, [], 0, "FORM"];
+private _providerCASBombing = _logicGroup createUnit ["SupportProvider_Virtual_CAS_Bombing", _pos, [], 0, "FORM"];
 
 //Setup provider values
 {
@@ -79,7 +79,7 @@ _providerCASBombing = _logicGroup createUnit ["SupportProvider_Virtual_CAS_Bombi
 ///////
 
 //Spawn a SupportProvider mosule of type Virtual_CAS_Heli
-_provider = _logicGroup createUnit ["SupportProvider_Virtual_CAS_Heli", _pos, [], 0, "FORM"];
+private _providerCASHeli = _logicGroup createUnit ["SupportProvider_Virtual_CAS_Heli", _pos, [], 0, "FORM"];
 
 //Setup provider values
 {

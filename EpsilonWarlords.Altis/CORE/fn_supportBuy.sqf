@@ -1,5 +1,5 @@
 //Define Player
-_player = player;
+private _player = player;
 
 //Setup requestor limit values
 {
@@ -10,5 +10,5 @@ _player = player;
 	"CAS_Bombing",
 	"Transport"
 ];
-_limitSupport = 1;
+private _limitSupport = 1;
 _player setVariable ["CAP_limitSupport", (_player getVariable "CAP_limitSupport") + _limitSupport, TRUE];
