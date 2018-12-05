@@ -2,9 +2,11 @@
 
 ///////
 
-_caller = _this # 1;
-_cost = _this # 3 # 0;
-_support = _this # 3 # 1;
+params [_caller,_cost,_support];
+
+systemChat format["%1",_caller];
+systemChat format["%1",_cost];
+systemChat format["%1",_support];
 
 //Create a side logic
 private _center = createCenter sideLogic;
@@ -15,11 +17,11 @@ private _logicGroup = createGroup _center;
 private _pos = [0,0,0];
 
 //Create position
-if (side _caller isEqualTo west) then {
+if ((side _caller) isEqualTo west) then {
 	_pos = (getpos westSupport);
 };
 
-if (side _caller isEqualTo east) then {
+if ((side _caller) isEqualTo east) then {
 	_pos = (getpos eastSupport);
 };
 

@@ -5,7 +5,7 @@ overviewPicture = "A3\Data_F_Warlords\data\wl_logo_ca.paa";
 overviewText = $STR_A3_WL_modRules;
 author = "Capwell [EC]";
 respawn = "BASE";
-respawnDelay = 20;
+respawnDelay = 1;
 
 class Header
 {
