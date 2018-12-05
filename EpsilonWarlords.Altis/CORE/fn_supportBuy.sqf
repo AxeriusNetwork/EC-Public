@@ -46,9 +46,14 @@ if (_support isEqualTo "westTransport") then {
 	//Spawn a SupportProvider mosule of type Virtual_Drop
 	private _providerTransport = _logicGroup createUnit ["SupportProvider_Virtual_Transport",_pos, [], 0, "FORM"];
 
+	if (CAP_debug) then {
+		private _text = format["Spawn Module and Type defined"];
+		[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+	};
+
 	//Setup provider values
 	{
-		_providerTransport setVariable [(_x select 0),(_x select 1)];
+		_providerTransport setVariable _x;
 	}forEach [
 		["BIS_SUPP_vehicles",["B_Heli_Transport_01_F"]],		//types of vehicles to use
 		// ["BIS_SUPP_vehicleinit",""],	//init code for vehicle
@@ -57,7 +62,10 @@ if (_support isEqualTo "westTransport") then {
 
 	//Sync the modules and the _caller together
 	[_caller, _requester, _providerTransport] call BIS_fnc_addSupportLink;
-
+	if (CAP_debug) then {
+		private _text = format["Modules and Caller Synced"];
+		[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+	};
 };
 
 if (_support isEqualTo "westArtillery") then {
@@ -72,7 +80,7 @@ if (_support isEqualTo "westArtillery") then {
 
 	//Setup provider values
 	{
-	   _providerArty setVariable [(_x select 0),(_x select 1)];
+	   _providerArty setVariable _x;
 	}forEach [
 	   ["BIS_SUPP_vehicles",["B_MBT_01_arty_F"]],        //types of vehicles to use
 	   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
@@ -95,7 +103,7 @@ if (_support isEqualTo "westCAS_Bombing") then {
 
 	//Setup provider values
 	{
-	   _providerCASBombing setVariable [(_x select 0),(_x select 1)];
+	   _providerCASBombing setVariable _x;
 	}forEach [
 	   ["BIS_SUPP_vehicles",["B_Plane_CAS_01_dynamicLoadout_F"]],        //types of vehicles to use
 	   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
@@ -118,7 +126,7 @@ if (_support isEqualTo "westCAS_Heli") then {
 
 	//Setup provider values
 	{
-	   _providerCASHeli setVariable [(_x select 0),(_x select 1)];
+	   _providerCASHeli setVariable _x;
 	}forEach [
 	   ["BIS_SUPP_vehicles",["B_Heli_Attack_01_dynamicLoadout_F"]],        //types of vehicles to use
 	   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
@@ -140,7 +148,7 @@ if (_support isEqualTo "eastTransport") then {
 
 	//Setup provider values
 	{
-		_providerTransport setVariable [(_x select 0),(_x select 1)];
+		_providerTransport setVariable _x;
 	}forEach [
 		["BIS_SUPP_vehicles",["O_Heli_Transport_04_bench_F"]],		//types of vehicles to use
 		// ["BIS_SUPP_vehicleinit",""],	//init code for vehicle
@@ -160,7 +168,7 @@ if (_support isEqualTo "eastArtillery") then {
 
 	//Setup provider values
 	{
-	   _providerArty setVariable [(_x select 0),(_x select 1)];
+	   _providerArty setVariable _x;
 	}forEach [
 	   ["BIS_SUPP_vehicles",["O_MBT_02_arty_F"]],        //types of vehicles to use
 	   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
@@ -179,7 +187,7 @@ if (_support isEqualTo "eastCAS_Bombing") then {
 
 	//Setup provider values
 	{
-	   _providerCASBombing setVariable [(_x select 0),(_x select 1)];
+	   _providerCASBombing setVariable _x;
 	}forEach [
 	   ["BIS_SUPP_vehicles",["O_Plane_CAS_02_dynamicLoadout_F"]],        //types of vehicles to use
 	   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
@@ -198,7 +206,7 @@ if (_support isEqualTo "eastCAS_Heli") then {
 
 	//Setup provider values
 	{
-	   _providerCASHeli setVariable [(_x select 0),(_x select 1)];
+	   _providerCASHeli setVariable _x;
 	}forEach [
 	   ["BIS_SUPP_vehicles",["O_Heli_Attack_02_dynamicLoadout_F"]],        //types of vehicles to use
 	   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
@@ -214,3 +222,8 @@ if (_support isEqualTo "eastCAS_Heli") then {
 
 private _limitSupport = 1;
 _caller setVariable ["CAP_limitSupport", (_caller getVariable "CAP_limitSupport") + _limitSupport, TRUE];
+
+if (CAP_debug) then {
+	private _text = format["Limit Support: %1",(_caller getVariable "CAP_limitSupport")];
+	[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+};
