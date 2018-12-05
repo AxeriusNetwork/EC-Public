@@ -7,6 +7,13 @@ author = "Capwell [EC]";
 respawn = "BASE";
 respawnDelay = 20;
 
+class Header
+{
+	gameType = Warlords;
+	minPlayers = 1;
+	maxPlayers = 60;
+};
+
 class CfgFunctions {
 	class CAP {
 		class CORE {

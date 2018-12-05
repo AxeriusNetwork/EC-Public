@@ -7,8 +7,11 @@ private _center = createCenter sideLogic;
 //Create a group for our modules
 private _logicGroup = createGroup _center;
 
+//Create a position 1km away from _player in random direction
+private _pos = [_player, 1000, (floor (random 360))] call BIS_fnc_relPos;
+
 //Spawn a SupportRequestor module
-private _requester = _logicGroup createUnit ["SupportRequester",getpos _player, [], 0, "FORM"];
+private _requester = _logicGroup createUnit ["SupportRequester",_pos, [], 0, "FORM"];
 
 //Setup requestor limit values
 {
@@ -22,9 +25,6 @@ private _requester = _logicGroup createUnit ["SupportRequester",getpos _player, 
 private _limitSupport = 1;
 _player setVariable ["CAP_limitSupport", (_player getVariable "CAP_limitSupport") + _limitSupport, TRUE];
 
-//Create a position 1km away from _player in random direction
-private _pos = [_player, 1000, (floor (random 360))] call BIS_fnc_relPos;
-
 ///////
 
 //Spawn a SupportProvider mosule of type Virtual_Drop
@@ -34,7 +34,7 @@ private _providerTransport = _logicGroup createUnit ["SupportProvider_Virtual_Tr
 {
 	_providerTransport setVariable [(_x select 0),(_x select 1)];
 }forEach [
-	["BIS_SUPP_vehicles",[]],		//types of vehicles to use
+	["BIS_SUPP_vehicles",["O_Heli_Transport_04_bench_F","B_Heli_Transport_01_F"]],		//types of vehicles to use
 	["BIS_SUPP_vehicleinit",""],	//init code for vehicle
 	["BIS_SUPP_filter","SIDE"]		//whether default vehicles comes from "SIDE" or "FACTION"
 ];
@@ -51,8 +51,8 @@ private _providerArty = _logicGroup createUnit ["SupportProvider_Virtual_Artille
 {
    _providerArty setVariable [(_x select 0),(_x select 1)];
 }forEach [
-   ["BIS_SUPP_vehicles",[]],        //types of vehicles to use
-   ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
+   ["BIS_SUPP_vehicles",["O_MBT_02_arty_F","B_MBT_01_arty_F"]],        //types of vehicles to use
+   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
    ["BIS_SUPP_filter","SIDE"]        //whether default vehicles comes from "SIDE" or "FACTION"
 ];
 
@@ -68,8 +68,8 @@ private _providerCASBombing = _logicGroup createUnit ["SupportProvider_Virtual_C
 {
    _providerCASBombing setVariable [(_x select 0),(_x select 1)];
 }forEach [
-   ["BIS_SUPP_vehicles",[]],        //types of vehicles to use
-   ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
+   ["BIS_SUPP_vehicles",["O_Plane_CAS_02_dynamicLoadout_F","B_Plane_CAS_01_dynamicLoadout_F"]],        //types of vehicles to use
+   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
    ["BIS_SUPP_filter","SIDE"]        //whether default vehicles comes from "SIDE" or "FACTION"
 ];
 
@@ -85,8 +85,8 @@ private _providerCASHeli = _logicGroup createUnit ["SupportProvider_Virtual_CAS_
 {
    _providerCASHeli setVariable [(_x select 0),(_x select 1)];
 }forEach [
-   ["BIS_SUPP_vehicles",[]],        //types of vehicles to use
-   ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
+   ["BIS_SUPP_vehicles",["O_Heli_Attack_02_dynamicLoadout_F","B_Heli_Attack_01_dynamicLoadout_F"]],        //types of vehicles to use
+   // ["BIS_SUPP_vehicleinit",""],    //init code for vehicle
    ["BIS_SUPP_filter","SIDE"]        //whether default vehicles comes from "SIDE" or "FACTION"
 ];
 
