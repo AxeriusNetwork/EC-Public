@@ -15,11 +15,17 @@ class Header
 };
 
 class CfgFunctions {
+
 	class CAP {
+
 		class CORE {
 			file = "CORE";
 			class supportInit{};
 			class supportBuy{};
+		}
+		class AddAction {
+			file = "CORE\AddAction";
+			class actionInit{};
 		}
 	}
 }

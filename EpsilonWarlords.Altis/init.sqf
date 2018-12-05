@@ -1,9 +1,19 @@
+///////
+
 enableSaving [FALSE, FALSE];
 0 setFog [0.1, 0.12, 22];
 
 if (isServer) then {
 	10e10 setOvercast 0.5;
 };
+
+
+///////
+
+[] call CAP_fnc_actionInit;
+
+
+///////
 
 _target = west;
 
@@ -30,3 +40,5 @@ _target = east;
 	[_target, ["O_Soldier_M_F",0,3] ] call BIS_fnc_addRespawnInventory;
 	[_target, ["O_Soldier_AT_F",0,3] ] call BIS_fnc_addRespawnInventory;
 	[_target, ["O_Soldier_UAV_F",0,3] ] call BIS_fnc_addRespawnInventory;
+
+///////
