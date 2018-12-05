@@ -1,0 +1,1 @@
+[player] call CAP_fnc_supportInit;

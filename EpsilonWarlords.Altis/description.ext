@@ -1,0 +1,494 @@
+onLoadMission = $STR_A3_WL_modRules;
+onLoadName = $STR_A3_WL_modName;
+loadScreen = "A3\Data_F_Warlords\data\wl_logo_ca.paa";
+overviewPicture = "A3\Data_F_Warlords\data\wl_logo_ca.paa";
+overviewText = $STR_A3_WL_modRules;
+author = "Capwell [EC]";
+respawn = "BASE";
+respawnDelay = 20;
+
+class CfgFunctions {
+	class CAP {
+		class CORE {
+			file = "CORE";
+			class supportInit{};
+		}
+	}
+}
+
+class Params
+{
+	class BIS_WLStartingDaytime
+	{
+		title = $STR_A3_combatpatrol_params_1;
+		values[] = {100, -6, 0, 6, -12};
+		texts[] = {$STR_A3_WL_param37_value1, $STR_A3_combatpatrol_params_3, $STR_A3_MP_COOP_m03_noon, $STR_A3_MP_COOP_m03_evening, $STR_A3_combatpatrol_params_6};
+		default = 100;
+	};
+	class BIS_WLTimeAcceleration
+	{
+		title = $STR_A3_WL_param2_title;
+		values[] = {1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24};
+		texts[] = {$STR_special_none, "x2", "x4", "x6", "x8", "x10", "x12", "x14", "x16", "x18", "x20", "x22", "x24"};
+		default = 1;
+	};
+	class BIS_WLProgress
+	{
+		title = $STR_A3_WL_param1_title;
+		values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		texts[] = {$STR_special_none,$STR_A3_WL_forcedProgress_perc_1,$STR_A3_WL_forcedProgress_perc_2,$STR_A3_WL_forcedProgress_perc_3,$STR_A3_WL_forcedProgress_perc_4,$STR_A3_WL_forcedProgress_perc_5,$STR_A3_WL_forcedProgress_perc_6,$STR_A3_WL_forcedProgress_perc_7,$STR_A3_WL_forcedProgress_perc_8,$STR_A3_WL_forcedProgress_perc_9,$STR_A3_WL_forcedProgress_perc_10,$STR_A3_WL_forcedProgress_perc_11,$STR_A3_WL_forcedProgress_perc_12};
+		default = 1;
+	};
+	class BIS_WLFTEnabled
+	{
+		title = $STR_A3_fastravel1;
+		values[] = {1, 0, 2, 3, 4};
+		texts[] = {$STR_A3_WL_param3_value1, $STR_A3_WL_param3_value2, $STR_A3_WL_param3_value3, $STR_A3_WL_param3_value4, $STR_A3_WL_param3_value5};
+		default = 1;
+	};
+	class BIS_WLScanEnabled
+	{
+		title = $STR_A3_WL_param4_title;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 1;
+	};
+	class BIS_WLVotingResetEnabled
+	{
+		title = $STR_A3_WL_menu_resetvoting;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 0;
+	};
+	class BIS_WLAIVoting
+	{
+		title = $STR_A3_WL_param5_title;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 0;
+	};
+	class BIS_WLArsenalEnabled
+	{
+		title = $STR_A3_Arsenal;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 1;
+	};
+	class BIS_WLMarkersTransparency
+	{
+		title = $STR_A3_WL_param7_title;
+		values[] = {4, 3, 2, 1, 0};
+		texts[] = {$STR_A3_WL_param7_value1, $STR_A3_WL_markerAlpha_perc_1, $STR_A3_WL_markerAlpha_perc_2, $STR_A3_WL_markerAlpha_perc_3, $STR_A3_WL_param7_value2};
+		default = 2;
+	};
+	class BIS_WLPlayersTransparency
+	{
+		title = $STR_A3_WL_param8_title;
+		values[] = {4, 3, 2, 1, 0};
+		texts[] = {$STR_A3_WL_param7_value1, $STR_A3_WL_markerAlpha_perc_1, $STR_A3_WL_markerAlpha_perc_2, $STR_A3_WL_markerAlpha_perc_3, $STR_A3_WL_param7_value2};
+		default = 2;
+	};
+	class BIS_WLFatigueEnabled
+	{
+		title = $STR_A3_fatigue1;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 1;
+	};
+	class BIS_WLMusic
+	{
+		title = $STR_A3_rscattributemusic_title;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 1;
+	};
+	class BIS_WLVoice
+	{
+		title = $STR_A3_orange_faction_idap_cfgidentities_expo_name;
+		values[] = {1, 0};
+		texts[] = {$STR_DISP_OPT_ENABLED, $STR_DISP_OPT_DISABLED};
+		default = 1;
+	};
+	class BIS_WLStartCP
+	{
+		title = $STR_A3_WL_param12_title;
+		values[] = {0, 100, 250, 500, 1000, 2500, 5000};
+		texts[] = {"0", "100", "250", "500", "1000", "2500", "5000"};
+		default = 500;
+	};
+	class BIS_WLCPMultiplier
+	{
+		title = $STR_A3_WL_param13_title;
+		values[] = {1, 2, 3, 4, 5};
+		texts[] = {"1x", "2x", "3x", "4x", "5x"};
+		default = 1;
+	};
+	class BIS_WLVotingTimeout
+	{
+		title = $STR_A3_WL_param14_title;
+		values[] = {5, 10, 15, 20, 25, 30};
+		texts[] = {"5", "10", "15", "20", "25", "30"};
+		default = 15;
+	};
+	class BIS_WLVehicleSpan
+	{
+		title = $STR_A3_WL_param15_title;
+		values[] = {900, 1800, 3600, 5400, 7200, 1000000};
+		texts[] = {"15", "30", "60", "90", "120", $STR_A3_WL_param15_value1};
+		default = 3600;
+	};
+	/*
+		Set view distance for all sides players.
+
+		You can optionally set minimum and maximum view distance (default is 1500 and 4000):
+			#define VIEW_DISTANCE_MIN	1500
+			#define VIEW_DISTANCE_MAX	4000
+
+		Optionally, you can set default value:
+			#define VIEW_DISTANCE_DEFAULT	2500
+
+		Include this file to description.ext of your mission.
+
+		Example:
+		class Params
+		{
+			#include "\a3\Functions_F_Heli\Params\paramViewDistance.inc"
+		};
+	*/
+
+	#ifndef VIEW_DISTANCE_MIN
+		#define VIEW_DISTANCE_MIN	1500
+	#endif
+	#ifndef VIEW_DISTANCE_MAX
+		#define VIEW_DISTANCE_MAX	4000
+	#endif
+	#ifndef VIEW_DISTANCE_DEFAULT
+		#define VIEW_DISTANCE_DEFAULT	2500
+	#endif
+
+	__EXEC(_distanceStep = VIEW_DISTANCE_MAX * 0.2 - VIEW_DISTANCE_MIN * 0.2;)
+	__EXEC(_distance0 = VIEW_DISTANCE_MIN + 0 * _distanceStep;)
+	__EXEC(_distance1 = VIEW_DISTANCE_MIN + 1 * _distanceStep;)
+	__EXEC(_distance2 = VIEW_DISTANCE_MIN + 2 * _distanceStep;)
+	__EXEC(_distance3 = VIEW_DISTANCE_MIN + 3 * _distanceStep;)
+	__EXEC(_distance4 = VIEW_DISTANCE_MIN + 4 * _distanceStep;)
+	__EXEC(_distance5 = VIEW_DISTANCE_MIN + 5 * _distanceStep;)
+
+	class ViewDistance
+	{
+		title = $STR_A3_paramViewDistance_title;
+		isGlobal = 1;
+
+		values[] = {
+			__EVAL(_distance0),
+			__EVAL(_distance1),
+			__EVAL(_distance2),
+			__EVAL(_distance3),
+			__EVAL(_distance4),
+			__EVAL(_distance5)
+		};
+		texts[] = {
+			__EVAL(_distance0),
+			__EVAL(_distance1),
+			__EVAL(_distance2),
+			__EVAL(_distance3),
+			__EVAL(_distance4),
+			__EVAL(_distance5)
+		};
+		default = VIEW_DISTANCE_DEFAULT;
+		function = "BIS_fnc_paramViewDistance";
+	};
+	/*
+		Adds server parameters related to revive.
+
+		How to install:
+		Include this file to description.ext of your mission.
+
+		Example:
+		class Params
+		{
+			#include "\a3\Functions_F\Params\paramRevive.inc"
+		};
+	*/
+
+	class ReviveMode
+	{
+		title = $STR_A3_ReviveMode;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			0,
+			1
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			$STR_A3_Disabled,
+			$STR_A3_EnabledForAllPlayers
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveMode";
+	};
+
+	class ReviveDuration
+	{
+		title = $STR_A3_ReviveDuration;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			6,
+			8,
+			10,
+			12,
+			15,
+			20,
+			25,
+			30
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			6,
+			8,
+			10,
+			12,
+			15,
+			20,
+			25,
+			30
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveDuration";
+	};
+
+	class ReviveRequiredTrait
+	{
+		title = $STR_A3_RequiredTrait;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			0,
+			1
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			$STR_A3_None,
+			$STR_A3_Medic
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveRequiredTrait";
+	};
+
+	class ReviveMedicSpeedMultiplier
+	{
+		title = $STR_A3_RequiredTrait_MedicSpeedMultiplier;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			1,
+			1.5,
+			2,
+			2.5,
+			3
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			"1x",
+			"1.5x",
+			"2x",
+			"2.5x",
+			"3x"
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveMedicSpeedMultiplier";
+	};
+
+	class ReviveRequiredItems
+	{
+		title = $STR_A3_RequiredItems;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			0,
+			1,
+			2
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			$STR_A3_None,
+			$STR_A3_Medikit,
+			$STR_A3_FirstAidKitOrMedikit
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveRequiredItems";
+	};
+
+	class UnconsciousStateMode
+	{
+		title = $STR_A3_IncapacitationMode;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			0,
+			1
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			$STR_A3_Basic,
+			$STR_A3_Advanced
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveUnconsciousStateMode";
+	};
+
+	class ReviveBleedOutDuration
+	{
+		title = $STR_A3_BleedOutDuration;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			10,
+			15,
+			20,
+			30,
+			45,
+			60,
+			90,
+			180
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			10,
+			15,
+			20,
+			30,
+			45,
+			60,
+			90,
+			180
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveBleedOutDuration";
+	};
+
+	class ReviveForceRespawnDuration
+	{
+		title = $STR_A3_ForceRespawnDuration;
+		isGlobal = 1;
+
+		values[] = {
+			-100,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		};
+		texts[] = {
+			$STR_A3_MissionDefault,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		};
+		default = -100;
+		function = "bis_fnc_paramReviveForceRespawnDuration";
+	};
+	/*
+		Include this file to description.ext of your mission
+
+		Optionally, you can set default value:
+			#define WEATHER_DEFAULT	0.8
+
+		Example:
+		class Params
+		{
+			#include "\a3\Functions_F\Params\paramWeather.inc"
+		};
+	*/
+
+	#ifndef WEATHER_DEFAULT
+		#define WEATHER_DEFAULT	25
+	#endif
+
+	class Weather
+	{
+		title = $STR_A3_rscattributeovercast_title;
+		values[] = {0,25,50,75,100};
+		texts[] = {
+			$STR_A3_rscattributeovercast_value000_tooltip,
+			$STR_A3_rscattributeovercast_value025_tooltip,
+			$STR_A3_rscattributeovercast_value050_tooltip,
+			$STR_A3_rscattributeovercast_value075_tooltip,
+			$STR_A3_rscattributeovercast_value100_tooltip
+		};
+		default = WEATHER_DEFAULT;
+		function = "BIS_fnc_paramWeather";
+	};
+	/*
+		Include this file to description.ext of your mission
+
+		Optionally, you can set default value:
+			#define DEBUGCONSOLE_DEFAULT	1
+
+		Example:
+		class Params
+		{
+			#include "\a3\Functions_F\Params\paramDebugConsole.inc"
+		};
+	*/
+
+	#ifndef DEBUGCONSOLE_DEFAULT
+		#define DEBUGCONSOLE_DEFAULT	0
+	#endif
+
+	class DebugConsole
+	{
+		title = $STR_A3_paramDebugConsole_title;
+		values[] = {0,1};
+		texts[] = {$STR_DISABLED,$STR_ENABLED};
+		default = DEBUGCONSOLE_DEFAULT;
+	};
+	/*
+		Include this file in description.ext of your mission
+
+		Optionally, you can set default value:
+			#define DAYTIMEPERIOD_DEFAULT	18
+
+		Example:
+		class Params
+		{
+			#include "\a3\Functions_F\Params\paramDaytimePeriod.inc"
+		};
+	*/
+
+	#ifndef DAYTIMEPERIOD_DEFAULT
+		#define DAYTIMEPERIOD_DEFAULT	12
+	#endif
+
+	class Daytime
+	{
+		title = $STR_A3_paramDaytimePeriod_title;
+		values[] = {6,12,18,0};
+		texts[] = {
+			$STR_A3_paramDaytimePeriod_text1,
+			$STR_A3_paramDaytimePeriod_text2,
+			$STR_A3_paramDaytimePeriod_text3,
+			$STR_A3_paramDaytimePeriod_text4
+		};
+		default = DAYTIMEPERIOD_DEFAULT;
+		function = "BIS_fnc_paramDaytime";
+	};
+};
