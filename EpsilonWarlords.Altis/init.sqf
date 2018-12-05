@@ -12,6 +12,7 @@ if (isServer) then {
 
 [] call CAP_fnc_actionInit;
 
+CAP_debug = true;
 
 ///////
 

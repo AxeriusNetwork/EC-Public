@@ -2,7 +2,7 @@
 
 ///////
 
-params [_caller,_cost,_support];
+params ["_caller","_cost","_support"];
 
 systemChat format["%1",_caller];
 systemChat format["%1",_cost];
@@ -31,10 +31,16 @@ private _requester = _logicGroup createUnit ["SupportRequester",_pos, [], 0, "FO
 ///////
 
 _caller setVariable ["BIS_WL_funds", (_caller getVariable "BIS_WL_funds") - _cost, TRUE];
+private _text = format["Removed: %1 CP",_cost];
+[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
 
 ///////
 
 if (_support isEqualTo "westTransport") then {
+	if (CAP_debug) then {
+		private _text = format["Transport Created!"];
+		[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+	};
 	[_caller, "Transport", 1] call BIS_fnc_limitSupport;
 
 	//Spawn a SupportProvider mosule of type Virtual_Drop
@@ -55,6 +61,10 @@ if (_support isEqualTo "westTransport") then {
 };
 
 if (_support isEqualTo "westArtillery") then {
+	if (CAP_debug) then {
+		private _text = format["Artillery Created!"];
+		[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+	};
 	[_caller, "Artillery", 1] call BIS_fnc_limitSupport;
 
 	//Spawn a SupportProvider mosule of type Virtual_Artillery
@@ -74,6 +84,10 @@ if (_support isEqualTo "westArtillery") then {
 };
 
 if (_support isEqualTo "westCAS_Bombing") then {
+	if (CAP_debug) then {
+		private _text = format["CAS Bombing Created!"];
+		[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+	};
 	[_caller, "CAS_Bombing", 1] call BIS_fnc_limitSupport;
 
 	//Spawn a SupportProvider mosule of type Virtual_CAS_Bombing
@@ -93,6 +107,10 @@ if (_support isEqualTo "westCAS_Bombing") then {
 };
 
 if (_support isEqualTo "westCAS_Heli") then {
+	if (CAP_debug) then {
+		private _text = format["CAS Helicopter Created!"];
+		[_text,3,5,[1,0.8,1,1],true] call BIS_fnc_WLSmoothText;
+	};
 	[_caller, "CAS_Heli", 1] call BIS_fnc_limitSupport;
 
 	//Spawn a SupportProvider mosule of type Virtual_CAS_Heli
