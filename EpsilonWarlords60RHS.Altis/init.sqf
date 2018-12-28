@@ -50,3 +50,16 @@ _target = east;
 	[_target, ["rhs_vdv_marksman_asval",0,3] ] call BIS_fnc_addRespawnInventory;
 
 ///////
+
+
+
+CAP_helipads = [
+	hpad1,
+	hpad2
+];
+
+for "_i" from 0 to 5 do {
+	_randomPos = selectRandom CAP_helipads;
+	_ammoPos = (getPosATL _randomPos);
+	_ammo = createVehicle ["ACE_medicalSupplyCrate", _ammoPos, [], 0, "NONE"];
+};
