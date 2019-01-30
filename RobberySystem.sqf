@@ -34,20 +34,18 @@ _playtimeHMS = format ["%1%2:%3%4:%5%6",_hh,_h,_mm,_m,_ss,_s];
 _playtimeHMS;
 
 // holdAction for the Safe Object
-[] spawn {
-	while {ableToRob} do {
-		[
-			ARP_B1_safe,"<t color='#c0392b'>Rob Safe",
-			"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_hack_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
-			"_this distance _target < 3","_caller distance _target < 3",
-			{ systemChat format["%1 started cracking safe.",_caller] },
-			{ playSound "SafeCrackingSingle"; systemChat format["%1 is cracking safe. [%2/%3].",_caller,_progress,_maxProgress] },
-			{ _this call ARP_fnc_robberySystemInit },
-			{ systemChat format["%1 stopped cracking safe.",_caller] },
-			[ _this select 0, _this select 1, _this select 2, _this select 3,],
-			120,0,true,false
-		] remoteExec ["BIS_fnc_holdActionAdd", 0, ARP_B1_safe];
-	};
+while {ableToRob} do {
+	[
+		ARP_B1_safe,"<t color='#c0392b'>Rob Safe",
+		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_hack_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
+		"_this distance _target < 3","_caller distance _target < 3",
+		{ systemChat format["%1 started cracking safe.",_caller] },
+		{ playSound "SafeCrackingSingle"; systemChat format["%1 is cracking safe. [%2/%3].",_caller,_progress,_maxProgress] },
+		{ _this call ARP_fnc_robberySystemInit },
+		{ systemChat format["%1 stopped cracking safe.",_caller] },
+		[ _this select 0, _this select 1, _this select 2, _this select 3,],
+		120,0,true,false
+	] remoteExec ["BIS_fnc_holdActionAdd", 0, ARP_B1_safe];
 };
 
 // fn_RobberySystemInit
