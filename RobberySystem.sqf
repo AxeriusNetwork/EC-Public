@@ -65,6 +65,9 @@ class ARP_Robbery {
 		ARP_Text : RscText {
 			idc = 668
 		};
+		ARP_Button : RscButton {
+			idc = 669
+		};
 	};
 };
 
@@ -79,7 +82,7 @@ _text = _display displayCtrl 668;
 
 {
 	_list lbAdd format["%1",name _x];
-} forEach allPlayers;
+} forEach allPlayers - (entities "HeadlessClient_F")
 
 _randomNumber = round(10000);
 
