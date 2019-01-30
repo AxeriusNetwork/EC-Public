@@ -82,7 +82,7 @@ _text = _display displayCtrl 668;
 
 {
 	_list lbAdd format["%1",name _x];
-} forEach allPlayers - (entities "HeadlessClient_F")
+} forEach (allPlayers - entities "HeadlessClient_F" - entities "VirtualSpecator_F" - entities "VirtualCurator_F")
 
 _randomNumber = round(10000);
 
